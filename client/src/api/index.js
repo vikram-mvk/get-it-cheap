@@ -16,21 +16,21 @@ export const fetchItems = () => {
 };
 
 export const fetchItem = (id) => {
-  return API.get(`/items/${id}`);
+  return API.get(`/item/${id}`);
 };
 
 export const createItem = (newItem) => {
-  return API.post("/items", newItem);
+  return API.post("/new-item", newItem);
 };
 
 export const signIn = (formData) => {
-  return API.post("/users/signin", formData);
+  return API.post("/signin", formData);
 };
 
 export const signUp = (formData) => {
-  return API.post("/users/signup", formData);
+  return API.post("/signup", formData);
 };
 
 export const fetchUserItems = (userId) => {
-  return API.get(`/items/${userId}/user-items`);
+  return API.get(`/items/${userId}`);
 };

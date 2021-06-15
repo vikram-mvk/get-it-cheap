@@ -78,7 +78,7 @@ const Form = ({ option }) => {
       country !== ""
     ) {
       console.log(user.result.name);
-      setItemData({ ...itemData, userName: user.result.name });
+      setItemData({ ...itemData, username: user.result.name });
       dispatch(addItem(itemData));
       console.log(itemData);
     }

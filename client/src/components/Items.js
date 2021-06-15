@@ -13,17 +13,17 @@ const Items = ({ items }) => {
           items.map((item) => (
             <div className="col-lg-4 col-md-4 col-sm-12" key={item._id}>
               <Card>
-                <Link to={`/items/${item._id}`}>
+                <Link to={`/item/${item._id}`}>
                   <CardImg>
                     <img
                       src={`${
-                        item.files.length > 1 ? item.files[1] : item.files
+                        item.files && items.files.length > 1 ? item.files[1] : item.files
                       }`}
                       alt={item.itemName}
                     />
                   </CardImg>
                   <CardDesc>
-                    <h3>{item.itemName}</h3>
+                    <h3>{item.title}</h3>
                     <p className="model">{item.option}</p>
                     <p className="price">
                       <span>$ </span>

@@ -20,8 +20,8 @@ const Item = () => {
     <div className="container">
       {data ? (
         <>
-          <h2>{data.itemName}</h2>
-          <p>{data.userName}</p>
+          <h2>{data.title}</h2>
+          <p>{data.username}</p>
         </>
       ) : (
         <Loader />
