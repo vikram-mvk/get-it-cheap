@@ -1,0 +1,68 @@
+UserRoutes
+
+	/signin [POST, unprotected]
+		
+		Request Params:
+			{
+				"username":"demo username",
+				"email":"demo email",
+				"password":"demo password"
+			}
+		
+		either username or Email must be provided.
+		Password must be provided
+		
+		Response: Jwt token
+	
+	
+	/signup [POST, unprotected]
+	
+		Request Params:
+			{
+				"username":"demo username",
+				"email":"demo email",
+				"password":"demo password"
+			}
+		
+		All Fields are required
+		
+		Response: status 200 with message "Signup successful"
+		
+		
+ItemRoutes
+
+
+	/items [GET, unprotected]
+	
+		Request Params: None. (When implementing filters use Url query string)
+		
+		Response: returns all items		
+
+		
+	/item/{id} [GET, unprotected]
+		
+		Request Params: None. (When implementing filters use Url query string)
+
+		Response: returns item based on the Id
+
+
+	/item [POST, protected] -> create a new item
+	
+		Request Params: 
+		
+		{
+			"title" : "",
+			"description":"",
+			"category":"",
+			"price":int,
+			"rental_basis": 0 (per hour) 1 (per day) 2 (per week) 3 (per month)
+			"type" 0 (rent) or 1 (sell used)
+			"deposit" : int,
+			"image": multipart data
+			
+		}
+		
+	/items/{username} [GET, protected] -> get the items posted by a specific user
+	
+		returns items based on username
+		

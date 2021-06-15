@@ -1,0 +1,11 @@
+Frontend:
+
+	Pagination
+	Sorting and searching
+	
+
+Backend:
+
+	Decide the database schema
+	
+	

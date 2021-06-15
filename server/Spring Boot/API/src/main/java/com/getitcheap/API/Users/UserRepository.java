@@ -16,7 +16,7 @@ public class UserRepository {
     @Autowired
     UserEntity userEntity;
 
-    private final Logger logger = LoggerFactory.getLogger(UserRepository.class);
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     UserEntity findByEmail(String email) {
         try {
