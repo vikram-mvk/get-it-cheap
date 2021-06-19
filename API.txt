@@ -41,11 +41,20 @@ ItemRoutes
 			"itemName" : "",
 			"description":"",
 			"category":"",
+			"model":"", optional
 			"price":int,
 			"rentalBasis": per_hour, per_day, per_week, per_month
 			"itemType" string [rent or sell]
-			"deposit" : int,
-			"image": String
+			"deposit" : int, optional
+			"image": multipart data, optional
+			"userId":"",
+			"city":"",
+			"country":"",
+			"state":"",
+			"pincode":int,
+			"createdAt":"",
+			"tags":"" optional,
+			"userName":""
 		}
 		
 		itemName and Description -> Search
@@ -65,15 +74,25 @@ ItemRoutes
 			"itemName" : "",
 			"description":"",
 			"category":"",
+			"model":"", optional
 			"price":int,
 			"rentalBasis": per_hour, per_day, per_week, per_month
 			"itemType" string [rent or sell]
-			"deposit" : int,
-			"image": multipart data
+			"deposit" : int, optional
+			"image": multipart data, optional
+			"userId":"",
+			"city":"",
+			"country":"",
+			"state":"",
+			"pincode":int,
+			"createdAt":"",
+			"tags":"" optional,
+			"contact":"",
+			"userName":""
 			
 		}
 		
-	/items/{username} [GET, protected] -> get the items posted by a specific user
+	/items/{userId} [GET, protected] -> get the items posted by a specific user
 	
 		returns items based on username
 		
