@@ -41,7 +41,7 @@ ItemRoutes
 			"itemName" : "",
 			"description":"",
 			"category":"",
-			"cost":int,
+			"price":int,
 			"rentalBasis": per_hour, per_day, per_week, per_month
 			"itemType" string [rent or sell]
 			"deposit" : int,
@@ -65,7 +65,7 @@ ItemRoutes
 			"itemName" : "",
 			"description":"",
 			"category":"",
-			"cost":int,
+			"price":int,
 			"rentalBasis": per_hour, per_day, per_week, per_month
 			"itemType" string [rent or sell]
 			"deposit" : int,
