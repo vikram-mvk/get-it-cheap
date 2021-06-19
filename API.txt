@@ -4,12 +4,11 @@ UserRoutes
 		
 		Request Params:
 			{
-				"username":"demo username",
 				"email":"demo email",
 				"password":"demo password"
 			}
 		
-		either username or Email must be provided.
+		Email must be provided.
 		Password must be provided
 		
 		Response: Jwt token
@@ -19,7 +18,8 @@ UserRoutes
 	
 		Request Params:
 			{
-				"username":"demo username",
+				"firstName":"demo FirstName",
+				"lastName":"demo lastName",
 				"email":"demo email",
 				"password":"demo password"
 			}
@@ -32,17 +32,28 @@ UserRoutes
 ItemRoutes
 
 
-	/items [GET, unprotected]
+	/items [GET, unprotected] ? category=string?cost=int?rentabl_basis=string?
 	
 		Request Params: None. (When implementing filters use Url query string)
 		
-		Response: returns all items		
-
+		Response: returns all items
+		{
+			"itemName" : "",
+			"description":"",
+			"category":"",
+			"cost":int,
+			"rental_basis": per_hour, per_day, per_week, per_month
+			"itemType" string [rent or sell]
+			"deposit" : int,
+			"image": String
+		}
+		
+		itemName and Description -> Search
+		everything else other other image -> Filtering
 		
 	/item/{id} [GET, unprotected]
 		
-		Request Params: None. (When implementing filters use Url query string)
-
+		Request Params: None.
 		Response: returns item based on the Id
 
 
@@ -51,12 +62,12 @@ ItemRoutes
 		Request Params: 
 		
 		{
-			"title" : "",
+			"itemName" : "",
 			"description":"",
 			"category":"",
-			"price":int,
-			"rental_basis": 0 (per hour) 1 (per day) 2 (per week) 3 (per month)
-			"type" 0 (rent) or 1 (sell used)
+			"cost":int,
+			"rental_basis": per_hour, per_day, per_week, per_month
+			"itemType" string [rent or sell]
 			"deposit" : int,
 			"image": multipart data
 			
