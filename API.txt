@@ -42,7 +42,7 @@ ItemRoutes
 			"description":"",
 			"category":"",
 			"cost":int,
-			"rental_basis": per_hour, per_day, per_week, per_month
+			"rentalBasis": per_hour, per_day, per_week, per_month
 			"itemType" string [rent or sell]
 			"deposit" : int,
 			"image": String
@@ -66,7 +66,7 @@ ItemRoutes
 			"description":"",
 			"category":"",
 			"cost":int,
-			"rental_basis": per_hour, per_day, per_week, per_month
+			"rentalBasis": per_hour, per_day, per_week, per_month
 			"itemType" string [rent or sell]
 			"deposit" : int,
 			"image": multipart data
