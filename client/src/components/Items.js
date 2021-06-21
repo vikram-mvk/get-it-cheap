@@ -19,7 +19,7 @@ const Items = ({ items }) => {
                       src={`${
                         item.files && items.files.length > 1 ? item.files[1] : item.files
                       }`}
-                      alt={item.itemName}
+                      alt={item.title}
                     />
                   </CardImg>
                   <CardDesc>

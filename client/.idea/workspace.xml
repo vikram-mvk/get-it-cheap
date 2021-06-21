@@ -19,7 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44acbd32-16a9-4fb7-bd09-05b42e9f1b87" name="Default Changelist" comment="" />
+    <list default="true" id="44acbd32-16a9-4fb7-bd09-05b42e9f1b87" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Items.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Items.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/Spring Boot/API/src/main/java/com/getitcheap/API/DataLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/Spring Boot/API/src/main/java/com/getitcheap/API/GetItCheapApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/Spring Boot/API/src/main/java/com/getitcheap/API/GetItCheapApiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/Spring Boot/API/src/main/java/com/getitcheap/API/Users/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/Spring Boot/API/src/main/java/com/getitcheap/API/Users/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/Spring Boot/API/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../server/Spring Boot/API/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +50,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -53,8 +63,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1623509380662</updated>
+      <workItem from="1623795052351" duration="227000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -66,5 +80,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
