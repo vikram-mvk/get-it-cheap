@@ -54,33 +54,28 @@ public class UserService implements UserDetailsService {
     }
 
     public ResponseEntity<?> signUp(UserEntity signupRequest) {
-        boolean success = false;
         if (userRepository.existsByEmail(signupRequest.getEmail())) {
             return ResponseEntity.status(400).body(new MessageResponse("This email address is already registered with us"));
-
-        } else if (userRepository.existsByUserName(signupRequest.getUsername())) {
-            return ResponseEntity.status(400).body(new MessageResponse("Sorry, This username is already taken"));
-
-        } else {
-            success = userRepository.signUp(signupRequest.getEmail(), signupRequest.getUsername(),
-                    encoder.encode(signupRequest.getPassword()));
         }
 
-        return success ? ResponseEntity.ok().body(new MessageResponse("Signup Successful")) :
+        boolean successful = userRepository.signUp(signupRequest.getFirstName(), signupRequest.getLastName(),
+                signupRequest.getEmail(), encoder.encode(signupRequest.getPassword()));
+
+        return successful ? ResponseEntity.ok().body(new MessageResponse("Signup Successful")) :
                 Utilities.getSomethingWentWrongResponse();
     }
 
     /**
      *  Method used by Spring Security
-     * @param username
+     * @param email
      * @return UserDetails Instance
      * @throws UsernameNotFoundException
      */
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = userRepository.findByUserName(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        UserEntity user = userRepository.findByEmail(email);
         if (user == null) {
-            throw new UsernameNotFoundException(String.format("User %s is not found", username));
+            throw new UsernameNotFoundException(String.format("User with email %s is not found", email));
         }
         return user;
     }

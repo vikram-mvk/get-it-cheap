@@ -30,28 +30,6 @@ public class UserRepository {
         }
     }
 
-    UserEntity findByUserName(String username) {
-        try {
-            String sql = "SELECT * FROM users WHERE username = ?";
-            return jdbcTemplate.queryForObject(sql, userEntity.getRowMapper(), username);
-        } catch (EmptyResultDataAccessException e) {
-            return null;
-        } catch (Exception e) {
-            logger.error( "Error in findByUserName()\n" + e.getMessage());
-            return null;
-        }
-    }
-
-    boolean existsByUserName(String username) {
-        try {
-            String sql = "SELECT EXISTS (SELECT * FROM users WHERE username = ?)";
-            return jdbcTemplate.queryForObject(sql, Boolean.class, username);
-        } catch (Exception e) {
-            logger.error( "Error in existsByUserName()\n" + e.getMessage());
-            return true;
-        }
-    }
-
     boolean existsByEmail(String email) {
         try {
             String sql = "SELECT EXISTS (SELECT * FROM users WHERE email = ?)";
@@ -62,10 +40,10 @@ public class UserRepository {
         }
     }
 
-    boolean signUp(String email, String username, String password) {
+    boolean signUp(String firstName, String lastName, String email, String password) {
         try {
-            String sql = "INSERT INTO users(username, email, password, active) VALUES(?,?,?,1)";
-            return jdbcTemplate.update(sql, username, email, password) > 0;
+            String sql = "INSERT INTO users(firstName, lastName, email, password, active) VALUES(?,?,?,?,1)";
+            return jdbcTemplate.update(sql, firstName, lastName, email, password) > 0;
         } catch (Exception e) {
             logger.error( "Error in signUp()\n" + e.getMessage());
             return false;

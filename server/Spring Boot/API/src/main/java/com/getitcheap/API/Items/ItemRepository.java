@@ -31,10 +31,10 @@ public class ItemRepository {
         }
     }
 
-    List<ItemEntity> getItemsOfThisUser(String username) {
+    List<ItemEntity> getItemsOfThisUser(Long userId) {
         try {
-            String sql = "SELECT * FROM items WHERE username = ? AND active = 1";
-            return jdbcTemplate.query(sql, itemEntity.getRowMapper(), username);
+            String sql = "SELECT * FROM items WHERE userId = ? AND active = 1";
+            return jdbcTemplate.query(sql, itemEntity.getRowMapper(), userId);
         } catch (EmptyResultDataAccessException e) {
             return null;
         } catch (Exception e) {
@@ -57,10 +57,11 @@ public class ItemRepository {
 
     boolean newItem(ItemEntity item) {
         try {
-            String sql = "INSERT INTO items VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
+            String sql = "INSERT INTO items(itemName, description, category, itemType, image, price, rentalBasis, userId,"
+                    + " username, contact, active) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
             return jdbcTemplate.update(sql,
-                    item.getTitle(), item.getDescription(), item.getCategory(), item.getType(), item.getImage(),
-                    item.getPrice(), item.getUsername(), item.getContact()) > 0;
+                    item.getItemName(), item.getDescription(), item.getCategory(), item.getItemType(), item.getImage(),
+                    item.getPrice(), item.getRentalBasis(), item.getUserId(), item.getUsername(), item.getContact()) > 0;
         } catch (EmptyResultDataAccessException e) {
             return false;
         } catch (Exception e) {
