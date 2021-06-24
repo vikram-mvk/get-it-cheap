@@ -40,6 +40,7 @@ public class HttpSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override     //HttpSecurity is used for Authorization
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         String unauthorizedUrls[] = new String[] {
+                "/",
                 UserRoutes.SIGNIN,
                 UserRoutes.SIGNUP,
                 ItemRoutes.GET_ITEMS,
