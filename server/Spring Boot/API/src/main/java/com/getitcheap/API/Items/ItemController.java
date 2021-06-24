@@ -34,9 +34,15 @@ public class ItemController {
     public ResponseEntity<?> newItem(@RequestBody ItemEntity item) {
 
         boolean success = itemService.newItem(item);
-
         return success ? ResponseEntity.status(200).body(new MessageResponse("Successful")) :
                 Utilities.getSomethingWentWrongResponse();
+    }
+
+    @GetMapping
+    public ResponseEntity<?> userItems(@PathVariable Long id) {
+            List<ItemEntity> userItems = itemService.getUserItems(id);
+        return ResponseEntity.status(200).body(userItems == null ? new MessageResponse("This user has not posted any items.")
+                : userItems);
     }
 
 }

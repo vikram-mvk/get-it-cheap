@@ -18,7 +18,9 @@ public class UserEntity implements UserDetails {
 
     private String email;
 
-    private String username;
+    private String firstName;
+
+    private String lastName;
 
     private String password;
 
@@ -42,8 +44,21 @@ public class UserEntity implements UserDetails {
         return this;
     }
 
-    public UserEntity setUsername(String username) {
-        this.username = username;
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public UserEntity setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public UserEntity setLastName(String lastName) {
+        this.lastName = lastName;
         return this;
     }
 
@@ -64,9 +79,9 @@ public class UserEntity implements UserDetails {
 
     // Below methods are needed by Spring Security to perform Authentication
 
-    @Override
+    @Override // In our app we're using email to authenticate a user
     public String getUsername() {
-        return username;
+        return getEmail();
     }
 
     @Override
@@ -110,10 +125,11 @@ public class UserEntity implements UserDetails {
                 UserEntity user = new UserEntity();
                 user
                     .setId(rs.getLong("id"))
-                    .setUsername(rs.getString("username"))
+                    .setFirstName(rs.getString("firstName"))
+                    .setLastName(rs.getString("lastName"))
+                    .setEmail(rs.getString("email"))
                     .setPassword(rs.getString("password"))
-                    .setActive(rs.getInt("active"))
-                    .setEmail(rs.getString("email"));
+                    .setActive(rs.getInt("active"));
 
                 return user;
             }

@@ -4,12 +4,11 @@ UserRoutes
 		
 		Request Params:
 			{
-				"username":"demo username",
 				"email":"demo email",
 				"password":"demo password"
 			}
 		
-		either username or Email must be provided.
+		Email must be provided.
 		Password must be provided
 		
 		Response: Jwt token
@@ -19,7 +18,8 @@ UserRoutes
 	
 		Request Params:
 			{
-				"username":"demo username",
+				"firstName":"demo FirstName",
+				"lastName":"demo lastName",
 				"email":"demo email",
 				"password":"demo password"
 			}
@@ -32,17 +32,37 @@ UserRoutes
 ItemRoutes
 
 
-	/items [GET, unprotected]
+	/items [GET, unprotected] ? category=string?cost=int?rentabl_basis=string?
 	
 		Request Params: None. (When implementing filters use Url query string)
 		
-		Response: returns all items		
-
+		Response: returns all items
+		{
+			"itemName" : "",
+			"description":"",
+			"category":"",
+			"model":"", optional
+			"price":int,
+			"rentalBasis": per_hour, per_day, per_week, per_month
+			"itemType" string [rent or sell]
+			"deposit" : int, optional
+			"image": multipart data, optional
+			"userId":"",
+			"city":"",
+			"country":"",
+			"state":"",
+			"pincode":int,
+			"createdAt":"",
+			"tags":"" optional,
+			"userName":""
+		}
+		
+		itemName and Description -> Search
+		everything else other other image -> Filtering
 		
 	/item/{id} [GET, unprotected]
 		
-		Request Params: None. (When implementing filters use Url query string)
-
+		Request Params: None.
 		Response: returns item based on the Id
 
 
@@ -51,18 +71,28 @@ ItemRoutes
 		Request Params: 
 		
 		{
-			"title" : "",
+			"itemName" : "",
 			"description":"",
 			"category":"",
+			"model":"", optional
 			"price":int,
-			"rental_basis": 0 (per hour) 1 (per day) 2 (per week) 3 (per month)
-			"type" 0 (rent) or 1 (sell used)
-			"deposit" : int,
-			"image": multipart data
+			"rentalBasis": per_hour, per_day, per_week, per_month
+			"itemType" string [rent or sell]
+			"deposit" : int, optional
+			"image": multipart data, optional
+			"userId":"",
+			"city":"",
+			"country":"",
+			"state":"",
+			"pincode":int,
+			"createdAt":"",
+			"tags":"" optional,
+			"contact":"",
+			"userName":""
 			
 		}
 		
-	/items/{username} [GET, protected] -> get the items posted by a specific user
+	/items/{userId} [GET, protected] -> get the items posted by a specific user
 	
 		returns items based on username
 		

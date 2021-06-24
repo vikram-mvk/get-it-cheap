@@ -19,8 +19,15 @@ public class ItemService {
         return itemRepository.getAllItems();
     }
 
+
+    public List<ItemEntity> getUserItems(Long id) {
+        return itemRepository.getItemsOfThisUser(id);
+    }
+
     public boolean newItem(ItemEntity item) {
         return itemRepository.newItem(item);
     }
+
+
 
 }

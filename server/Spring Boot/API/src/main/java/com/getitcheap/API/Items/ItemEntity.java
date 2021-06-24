@@ -12,19 +12,21 @@ public class ItemEntity {
 
     private Long id;
 
-    private String title;
+    private String itemName;
 
     private String description;
 
     private String category;
 
-    private int type;
+    private String itemType;
 
     private String image;
 
     private String price;
 
-    private Long creator;
+    private String rentalBasis;
+
+    private Long userId;
 
     private String contact;
 
@@ -41,12 +43,12 @@ public class ItemEntity {
         return this;
     }
 
-    public String getTitle() {
-        return title;
+    public String getItemName() {
+        return itemName;
     }
 
-    public ItemEntity setTitle(String title) {
-        this.title = title;
+    public ItemEntity setItemName(String itemName) {
+        this.itemName = itemName;
         return this;
     }
 
@@ -68,12 +70,21 @@ public class ItemEntity {
         return this;
     }
 
-    public int getType() {
-        return type;
+    public String getItemType() {
+        return itemType;
     }
 
-    public ItemEntity setType(int type) {
-        this.type = type;
+    public ItemEntity setItemType(String itemType) {
+        this.itemType = itemType;
+        return this;
+    }
+
+    public String getRentalBasis() {
+        return rentalBasis;
+    }
+
+    public ItemEntity setRentalBasis(String rentalBasis) {
+        this.rentalBasis = rentalBasis;
         return this;
     }
 
@@ -95,12 +106,12 @@ public class ItemEntity {
         return this;
     }
 
-    public Long getCreator() {
-        return creator;
+    public Long getUserId() {
+        return userId;
     }
 
-    public ItemEntity setCreator(Long creator) {
-        this.creator = creator;
+    public ItemEntity setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 
@@ -134,19 +145,21 @@ public class ItemEntity {
 
     @JsonIgnore
     public RowMapper<ItemEntity> getRowMapper() {
-        return new RowMapper<ItemEntity>() {
+        return new RowMapper<ItemEntity>() { // Always ensure that the Row Mapper and ItemEntity variables names match
 
             @Override
             public ItemEntity mapRow(ResultSet rs, int i) throws SQLException {
                 ItemEntity item = new ItemEntity();
                 item
                         .setId(rs.getLong("id"))
-                        .setTitle(rs.getString("title"))
+                        .setItemName(rs.getString("itemName"))
                         .setDescription(rs.getString("description"))
                         .setCategory(rs.getString("category"))
-                        .setType(rs.getInt("type"))
+                        .setItemType(rs.getString("itemType"))
                         .setImage(rs.getString("image"))
                         .setPrice(rs.getString("price"))
+                        .setRentalBasis(rs.getString("rentalBasis"))
+                        .setUserId(rs.getLong("userId"))
                         .setUsername(rs.getString("username"))
                         .setContact(rs.getString("contact"))
                         .setActive(rs.getInt("active"));

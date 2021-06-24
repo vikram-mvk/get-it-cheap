@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS users(
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(50) UNIQUE NOT NULL,
+    id BIGINT NOT NULL UNIQUE AUTO_INCREMENT,
+    firstName VARCHAR(100) NOT NULL,
+    lastName VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(100) NOT NULL,
     active int NOT NULL,
@@ -9,15 +10,17 @@ CREATE TABLE IF NOT EXISTS users(
 
 CREATE TABLE IF NOT EXISTS items(
     id BIGINT NOT NULL AUTO_INCREMENT,
-    title VARCHAR(255) NOT NULL,
+    itemName VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
     category VARCHAR(255) NOT NULL,
-    type int NOT NULL,
+    itemType VARCHAR(15) NOT NULL,
     image VARCHAR(255),
     price VARCHAR(255) NOT NULL,
-    username VARCHAR(50) NOT NULL,
+    rentalBasis VARCHAR(15) NOT NULL,
+    userId BIGINT NOT NULL,
+    username VARCHAR(255) NOT NULL,
     contact VARCHAR(255) NOT NULL,
     active int NOT NULL,
-    FOREIGN KEY(username) REFERENCES users(username) ON UPDATE CASCADE,
+    FOREIGN KEY(userId) REFERENCES users(id) ON UPDATE CASCADE,
     PRIMARY KEY(id)
 );
