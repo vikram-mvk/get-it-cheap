@@ -1,5 +1,7 @@
 package com.getitcheap.API.Security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -10,6 +12,7 @@ import java.io.IOException;
 
 public class RequestFilter extends OncePerRequestFilter {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private JwtTokenService jwtTokenService;
 
 

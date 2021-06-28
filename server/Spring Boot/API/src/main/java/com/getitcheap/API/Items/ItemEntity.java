@@ -1,6 +1,7 @@
 package com.getitcheap.API.Items;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
@@ -43,6 +44,7 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonProperty("itemName")
     public String getItemName() {
         return itemName;
     }
@@ -52,6 +54,7 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonProperty("description")
     public String getDescription() {
         return description;
     }
@@ -61,6 +64,7 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonProperty("category")
     public String getCategory() {
         return category;
     }
@@ -70,6 +74,7 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonProperty("itemType")
     public String getItemType() {
         return itemType;
     }
@@ -79,6 +84,7 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonProperty("rentalBasis")
     public String getRentalBasis() {
         return rentalBasis;
     }
@@ -88,6 +94,7 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonProperty("image")
     public String getImage() {
         return image;
     }
@@ -97,6 +104,7 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonProperty("price")
     public double getPrice() {
         return price;
     }
@@ -106,6 +114,7 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonProperty("userId")
     public Long getUserId() {
         return userId;
     }
@@ -115,6 +124,7 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonProperty("contact")
     public String getContact() {
         return contact;
     }
@@ -124,6 +134,8 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonIgnore
+    @JsonProperty("active")
     public int getActive() {
         return active;
     }
@@ -137,7 +149,6 @@ public class ItemEntity {
         return this;
     }
 
-    @JsonIgnore
     public ItemEntity setActive(int active) {
         this.active = active;
         return this;
@@ -145,7 +156,7 @@ public class ItemEntity {
 
     @JsonIgnore
     public RowMapper<ItemEntity> getRowMapper() {
-        return new RowMapper<ItemEntity>() { // Always ensure that the Row Mapper and ItemEntity variables names match
+        return new RowMapper<ItemEntity>() {
 
             @Override
             public ItemEntity mapRow(ResultSet rs, int i) throws SQLException {

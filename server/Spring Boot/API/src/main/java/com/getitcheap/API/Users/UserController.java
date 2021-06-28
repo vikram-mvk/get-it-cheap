@@ -17,6 +17,11 @@ public class UserController {
         return ResponseEntity.ok(new MessageResponse("Welcome!"));
     }
 
+    @GetMapping("/unauthorized")
+    public ResponseEntity<?> unauthorizedResponse() {
+        return ResponseEntity.status(401).body(new MessageResponse("Unauthorized"));
+    }
+
     @PostMapping(UserRoutes.SIGNIN)
     public ResponseEntity<?> signIn(@RequestBody UserEntity signInRequest) {
         return userService.signIn(signInRequest);
