@@ -46,7 +46,7 @@ public class UserService implements UserDetailsService {
 
             return ResponseEntity.ok(new JwtResponse(jwt,
                     user.getId(),
-                    user.getUsername(),
+                    user.getFullName(),
                     user.getEmail()));
         } catch (Exception e) {
             return ResponseEntity.status(403).body(new MessageResponse("Invalid credentials"));

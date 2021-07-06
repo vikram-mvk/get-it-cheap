@@ -17,8 +17,17 @@ public class ItemController {
     ItemService itemService;
 
     @GetMapping(ItemRoutes.GET_ITEMS)
-    public ResponseEntity<?> getAllItems() {
-        List<ItemEntity> items = itemService.getAllItems();
+    public ResponseEntity<?> getItems(@RequestParam(value = "type", required = false) List<String> itemTypes,
+                                      @RequestParam(value = "category", required = false) List<String> categories ) {
+
+        List<ItemEntity> items = itemService.getItems(itemTypes, categories);
+        return ResponseEntity.status(200).body(items == null ? new MessageResponse("No Items found") : items);
+    }
+
+    @GetMapping(ItemRoutes.SEARCH_ITEMS)
+    public ResponseEntity<?> searchItems(@RequestParam(value = "key") String searchKey) {
+
+        List<ItemEntity> items = itemService.searchItems(searchKey);
         return ResponseEntity.status(200).body(items == null ? new MessageResponse("No Items found") : items);
     }
 
@@ -27,7 +36,6 @@ public class ItemController {
 
         ItemEntity item = itemService.getItem(id);
         return ResponseEntity.ok().body(item == null ? new MessageResponse("Item not found") : item);
-
     }
 
     @PostMapping(ItemRoutes.NEW_ITEM)
@@ -38,8 +46,8 @@ public class ItemController {
                 Utilities.getSomethingWentWrongResponse();
     }
 
-    @GetMapping
-    public ResponseEntity<?> userItems(@PathVariable Long id) {
+    @GetMapping(ItemRoutes.USER_ITEM)
+    public ResponseEntity<?> getUserItems(@PathVariable Long id) {
             List<ItemEntity> userItems = itemService.getUserItems(id);
         return ResponseEntity.status(200).body(userItems == null ? new MessageResponse("This user has not posted any items.")
                 : userItems);

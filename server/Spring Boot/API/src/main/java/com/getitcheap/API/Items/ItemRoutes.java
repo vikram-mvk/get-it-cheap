@@ -6,5 +6,6 @@ public @interface ItemRoutes {
     String NEW_ITEM = "/item";
     String GET_ITEM = "/item/{id}";
     String USER_ITEM = "/items/:username";
+    String SEARCH_ITEMS = "/items/search";
 
 }

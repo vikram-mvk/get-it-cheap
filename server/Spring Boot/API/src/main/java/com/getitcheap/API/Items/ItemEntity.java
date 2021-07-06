@@ -31,6 +31,8 @@ public class ItemEntity {
 
     private String contact;
 
+    private String datePosted;
+
     private int active;
 
     private String username;
@@ -134,6 +136,17 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonProperty("datePosted")
+    public String getDatePosted() {
+        return datePosted;
+    }
+
+    public ItemEntity setDatePosted(String datePosted) {
+        this.datePosted = datePosted;
+        return this;
+    }
+
+
     @JsonIgnore
     @JsonProperty("active")
     public int getActive() {
@@ -149,6 +162,7 @@ public class ItemEntity {
         return this;
     }
 
+    @JsonIgnore
     public ItemEntity setActive(int active) {
         this.active = active;
         return this;
@@ -173,6 +187,7 @@ public class ItemEntity {
                         .setUserId(rs.getLong("userId"))
                         .setUsername(rs.getString("username"))
                         .setContact(rs.getString("contact"))
+                        .setDatePosted(rs.getString("datePosted"))
                         .setActive(rs.getInt("active"));
 
                 return item;

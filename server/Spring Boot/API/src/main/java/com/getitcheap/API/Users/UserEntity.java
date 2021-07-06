@@ -1,5 +1,7 @@
 package com.getitcheap.API.Users;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -67,19 +69,26 @@ public class UserEntity implements UserDetails {
         return this;
     }
 
+    @JsonIgnore
     public int getActive() {
         return active;
     }
 
+    @JsonIgnore
     public UserEntity setActive(int active) {
         this.active = active;
         return this;
     }
 
+    @JsonProperty("username")
+    public String getFullName() {
+        return this.firstName+" "+this.lastName;
+    }
 
     // Below methods are needed by Spring Security to perform Authentication
 
-    @Override // In our app we're using email to authenticate a user
+    @JsonProperty("email")
+    @Override // In our app we're using email to authenticate a user. So return email to SpringBoot
     public String getUsername() {
         return getEmail();
     }

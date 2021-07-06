@@ -19,9 +19,10 @@ public class ItemRepository {
 
     private final Logger logger = LoggerFactory.getLogger(ItemRepository.class);
 
-    List<ItemEntity> getAllItems() {
+    List<ItemEntity> getItems(String itemTypes, String categories) {
         try {
-            String sql = "SELECT * FROM items WHERE active = 1";
+            String sql = "SELECT * FROM items WHERE itemType %s AND category %s AND active = 1";
+            sql = String.format(sql, itemTypes, categories);
             return jdbcTemplate.query(sql, itemEntity.getRowMapper());
         } catch (EmptyResultDataAccessException e) {
             return null;
@@ -55,10 +56,26 @@ public class ItemRepository {
         }
     }
 
+    List<ItemEntity> searchItems(String searchKey) {
+        try {
+            String sql = "SELECT * FROM items WHERE itemName LIKE '%s' OR description LIKE '%s' OR " +
+                    "category LIKE '%s' AND active = 1";
+
+            searchKey = "%"+searchKey+"%";
+            sql = String.format(sql, searchKey, searchKey, searchKey);
+            return jdbcTemplate.query(sql, itemEntity.getRowMapper());
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        } catch (Exception e) {
+            logger.error( "Error in searchItems()\n" + e.getMessage());
+            return null;
+        }
+    }
+
     boolean newItem(ItemEntity item) {
         try {
             String sql = "INSERT INTO items(itemName, description, category, itemType, image, price, rentalBasis, userId,"
-                    + " username, contact, active) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
+                    + " username, contact, datePosted, active) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, 1)";
             return jdbcTemplate.update(sql,
                     item.getItemName(), item.getDescription(), item.getCategory(), item.getItemType(), item.getImage(),
                     item.getPrice(), item.getRentalBasis(), item.getUserId(), item.getUsername(), item.getContact()) > 0;

@@ -6,14 +6,14 @@ public class JwtResponse {
 
     private Long userId;
 
-    private String userName;
+    private String username;
 
     private String email;
 
     public JwtResponse(String jwt, Long userId, String userName, String email) {
         this.jwt = jwt;
         this.userId = userId;
-        this.userName = userName;
+        this.username = userName;
         this.email = email;
     }
 
@@ -33,12 +33,12 @@ public class JwtResponse {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getEmail() {

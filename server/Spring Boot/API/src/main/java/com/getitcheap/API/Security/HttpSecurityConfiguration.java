@@ -44,7 +44,8 @@ public class HttpSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 UserRoutes.SIGNIN,
                 UserRoutes.SIGNUP,
                 ItemRoutes.GET_ITEMS,
-                ItemRoutes.GET_ITEM
+                ItemRoutes.GET_ITEM,
+                ItemRoutes.SEARCH_ITEMS
         };
 
         httpSecurity.
