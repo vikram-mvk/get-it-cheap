@@ -5,6 +5,11 @@ import com.getitcheap.API.Items.ItemEntity;
 import com.getitcheap.API.Items.ItemRoutes;
 import com.getitcheap.API.Users.UserRoutes;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class Utilities {
 
@@ -25,6 +30,14 @@ public class Utilities {
                 break;
         }
         return isValid;
+    }
+
+    public static File convertMultiPartToFile(MultipartFile file) throws IOException {
+        File convFile = new File(file.getOriginalFilename());
+        FileOutputStream fos = new FileOutputStream(convFile);
+        fos.write(file.getBytes());
+        fos.close();
+        return convFile;
     }
 
 }
